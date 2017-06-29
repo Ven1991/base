@@ -1,6 +1,5 @@
 package com.webapp.framework.utils.tools;
 
-import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
@@ -13,6 +12,7 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.apache.commons.lang.StringUtils;
 
 public class StringUtil extends StringUtils
@@ -87,7 +87,6 @@ public class StringUtil extends StringUtils
       String value = (String)str;
       return value.trim().equals("");
     }
-
     return false;
   }
 
