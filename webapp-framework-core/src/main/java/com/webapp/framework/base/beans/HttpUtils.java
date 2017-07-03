@@ -16,7 +16,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 import org.springframework.web.util.HtmlUtils;
 
-import com.webapp.framework.core.mvc.controller.bean.HttpStackManager;
+import com.webapp.framework.base.controller.bean.HttpStackManager;
 import com.webapp.framework.utils.file.utils.FileUtil;
 import com.webapp.framework.utils.json.JsonMapper;
 import com.webapp.framework.utils.tools.StringUtil;

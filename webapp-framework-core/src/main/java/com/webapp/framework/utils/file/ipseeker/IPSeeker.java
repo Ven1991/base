@@ -21,17 +21,24 @@ import com.webapp.framework.utils.file.ipseeker.util.Util;
 public class IPSeeker
 {
   protected static final Logger log = LoggerFactory.getLogger(IPSeeker.class);
-  private static IPSeeker instance = null;
-
   private String IP_FILE = "/data/qqwry.dat";
+  
+  //一些固定常量，比如记录长度等等
   private static final int IP_RECORD_LENGTH = 7;
-  private static final byte REDIRECT_MODE_1 = 1;
-  private static final byte REDIRECT_MODE_2 = 2;
+  private static final byte REDIRECT_MODE_1 = 0x01;
+  private static final byte REDIRECT_MODE_2 = 0x02;
+  
+  // 用来做为cache，查询一个ip时首先查看cache，以减少不必要的重复查找
   private Map<String, IPLocation> ipCache;
+  // 随机文件访问类
   private RandomAccessFile ipFile;
+  // 内存映射文件
   private MappedByteBuffer mbb;
-  private long ipBegin;
-  private long ipEnd;
+  // 单一模式实例
+  private static IPSeeker instance = new IPSeeker();
+  // 起始地区的开始和结束的绝对偏移
+  private long ipBegin, ipEnd;
+  // 为提高效率而采用的临时变量
   private IPLocation loc;
   private byte[] buf;
   private byte[] b4;

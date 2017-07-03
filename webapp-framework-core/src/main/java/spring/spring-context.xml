@@ -16,14 +16,10 @@
      
      <!-- 启用spring mvc 注解 -->
 	<context:annotation-config />
-	<context:component-scan base-package="com.webapp.**.action" />
+	<context:component-scan base-package="com.webapp.**.controller" />
     <context:component-scan base-package="com.webapp.**.dao" />
 	<context:component-scan base-package="com.webapp.**.service" />
 	<context:component-scan base-package="com.webapp.**.business" />
 	<context:component-scan base-package="com.webapp.**.component" />
-     
-     
-     
-     
      
 </beans>

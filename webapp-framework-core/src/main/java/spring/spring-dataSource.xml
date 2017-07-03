@@ -16,9 +16,10 @@
 
     <bean id="readDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">     
       <!-- 基本属性 url、user、password -->  
-      <property name="url" value="jdbc:mysql://localhost:3306/wlsq" />  
-      <property name="username" value="root" />  
-      <property name="password" value="123456" />  
+      <property name="driverClassName" value="${mysql.driverClassName}" /> 
+      <property name="url" value="${mysql.master.jdbcurl}" />     
+ 	  <property name="username" value="${mysql.master.username}" />     
+      <property name="password" value="${mysql.master.password}" /> 
       
       <!-- 配置初始化大小、最小、最大 -->  
       <property name="initialSize" value="1" />  
@@ -49,9 +50,10 @@
       
     <bean id="writeDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">    
       <!-- 基本属性 url、user、password -->  
-      <property name="url" value="jdbc:mysql://localhost:3306/wlsqs" />  
-      <property name="username" value="root" />  
-      <property name="password" value="123456" />  
+      <property name="driverClassName" value="${mysql.driverClassName}" /> 
+      <property name="url" value="${mysql.slave.one.jdbcurl}" />     
+ 	  <property name="username" value="${mysql.slave.one.username}" />     
+      <property name="password" value="${mysql.slave.one.password}" /> 
   
       <!-- 配置初始化大小、最小、最大 -->  
       <property name="initialSize" value="1" />  
@@ -92,16 +94,15 @@
         <property name="defaultTargetDataSource" ref="readDataSource1"/>      
     </bean>  
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 </beans>
+
+
+
+
+
+
+
+
+
+
+
