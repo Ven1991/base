@@ -35,6 +35,8 @@ import com.webapp.framework.utils.json.JsonMapper;
 import com.webapp.framework.utils.tools.SerializableUtil;
 import com.webapp.framework.utils.tools.StringUtil;
 
+import net.sf.json.JSONObject;
+
 public class BaseController{
   public static final String ERROR_MESSAGE_IN_MAP_KEY = "_error";
   public static final String SUCCESS_MESSAGE_IN_MAP_KEY = "_success";
