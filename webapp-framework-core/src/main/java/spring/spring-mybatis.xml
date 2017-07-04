@@ -3,45 +3,38 @@
   xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
   xmlns:cache="http://www.springframework.org/schema/cache" xmlns:p="http://www.springframework.org/schema/p"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans 
-     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-     http://www.springframework.org/schema/aop
-     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-     http://www.springframework.org/schema/context
-     http://www.springframework.org/schema/context/spring-context-4.0.xsd
-     http://www.springframework.org/schema/tx
-     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-     http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd"
-     default-lazy-init="true">
- 
+  xmlns:mybatis="http://mybatis.org/schema/mybatis-spring" 
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+     http://mybatis.org/schema/mybatis-spring 
+     http://mybatis.org/schema/mybatis-spring.xsd" 
+     default-autowire="byName" default-lazy-init="true">
+     
 	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
-	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
 	    <property name="dataSource" ref="dataSource"></property>
 	    <!-- 自动扫描映射文件 -->
-	    <property name="mapperLocations" value="classpath:com/webapp/*/mapper/*.xml"></property>
-	    <property name="plugins">
-	            <bean class="com.github.pagehelper.PageHelper">
-	                <property name="properties">
-	                    <value>
-	                        dialect=mysql
-	                        reasonable=true
-	                        supportMethodsArguments=true
-	                        params=count=countSql
-	                        autoRuntimeDialect=true
-	                    </value>
-	                </property>
-	            </bean>
-	        </array>
-	    </property>
+	    <property name="mapperLocations" value="classpath*:/com/webapp/**/mapper/*Mapper.xml"></property>
+	    <!-- mybatis插件配置  PageHelper -->
+	    <property name="configLocation" value="classpath*:/mybatis/mybatis-config.xml" />  
 	</bean>
 	
-	<!-- 将映射文件与mapper类关联 -->
-	<mybatis:scan base-package="com.webapp.**.mapper"/>  
+	<!-- 该包下的类支持注解，表示会被当作{@code mybatis mapper}处理 配置了之后表示可以自动引入mapper类-->  
+	<!-- <mybatis:scan base-package="com.webapp.**.mapper"/>   -->
 	
-	<!-- 将映射文件与mapper类关lian
-	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-	    <property name="basePackage" value="com.china.*.mapper"></property>
-	    <property name="markerInterface" value="com.china.base.mapper.BaseMapper"></property>
-	</bean> -->
+	<!-- 将映射文件与mapper类关lian-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	    <property name="basePackage" value="com.webapp.**.mapper"></property>
+	     <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+	    <!-- <property name="markerInterface" value="com.webapp.base.mapper.BaseMapper"></property> -->
+	</bean> 
      
 </beans>
+
+
+
+
+
+

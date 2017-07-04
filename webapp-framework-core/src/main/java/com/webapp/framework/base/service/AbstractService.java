@@ -10,8 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.webapp.framework.base.beans.BeanUtil;
 
 @Transactional(readOnly=true, propagation=Propagation.NOT_SUPPORTED)
-public abstract class AbstractService
-{
+public abstract class AbstractService{
   protected Log log = LogFactory.getLog(getClass());
 
   public abstract Date getDate();

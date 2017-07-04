@@ -23,7 +23,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFDataFormat;
@@ -32,9 +33,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 
 import com.webapp.framework.utils.file.utils.FileUtil;
 
-public class ExcelExportUtil
-{
-  private static final Logger LOGGER = Logger.getLogger(ExcelExportUtil.class);
+public class ExcelExportUtil{
+  private static final Logger LOGGER = LogManager.getLogger(ExcelExportUtil.class);
   public static final String XLSX = ".xlsx";
   public static final String ZIP = ".zip";
   public static final String DATA_SCOPE_TITLE_DATA = "A";

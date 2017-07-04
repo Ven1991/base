@@ -3,23 +3,20 @@
   xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
   xmlns:cache="http://www.springframework.org/schema/cache" xmlns:p="http://www.springframework.org/schema/p"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans 
-     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-     http://www.springframework.org/schema/aop
-     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+  xmlns:mybatis="http://mybatis.org/schema/mybatis-spring" 
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
      http://www.springframework.org/schema/context
-     http://www.springframework.org/schema/context/spring-context-4.0.xsd
-     http://www.springframework.org/schema/tx
-     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-     http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd"
-     default-lazy-init="true">
+     http://www.springframework.org/schema/context/spring-context-4.2.xsd" 
+     default-autowire="byName" default-lazy-init="true">
 
     <bean id="readDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">     
       <!-- 基本属性 url、user、password -->  
-      <property name="driverClassName" value="${mysql.driverClassName}" /> 
-      <property name="url" value="${mysql.master.jdbcurl}" />     
- 	  <property name="username" value="${mysql.master.username}" />     
-      <property name="password" value="${mysql.master.password}" /> 
+     <!--  <property name="driverClassName" value="${mysql.driverClassName}" />  -->
+      <property name="url" value="${mysql.slave.one.jdbcurl}" />     
+ 	  <property name="username" value="${mysql.slave.one.username}" />     
+      <property name="password" value="${mysql.slave.one.password}" /> 
       
       <!-- 配置初始化大小、最小、最大 -->  
       <property name="initialSize" value="1" />  
@@ -50,10 +47,10 @@
       
     <bean id="writeDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">    
       <!-- 基本属性 url、user、password -->  
-      <property name="driverClassName" value="${mysql.driverClassName}" /> 
-      <property name="url" value="${mysql.slave.one.jdbcurl}" />     
- 	  <property name="username" value="${mysql.slave.one.username}" />     
-      <property name="password" value="${mysql.slave.one.password}" /> 
+     <!--  <property name="driverClassName" value="${mysql.driverClassName}" />  -->
+      <property name="url" value="${mysql.master.jdbcurl}" />     
+ 	  <property name="username" value="${mysql.master.username}" />     
+      <property name="password" value="${mysql.master.password}" /> 
   
       <!-- 配置初始化大小、最小、最大 -->  
       <property name="initialSize" value="1" />  
@@ -82,7 +79,7 @@
       <property name="filters" value="stat" />   
     </bean>  
   
-    <bean id="dataSource" class="com.webapp.framework.core.common.datasource.DynamicDataSource">  
+    <bean id="dataSource" class="com.webapp.framework.common.datasource.DynamicDataSource">  
         <property name="targetDataSources">      
           <map key-type="java.lang.String">      
               <!-- write -->    

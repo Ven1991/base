@@ -7,19 +7,14 @@ import org.springframework.dao.DataAccessException;
 import com.webapp.framework.base.dao.EntityDao;
 import com.webapp.framework.base.service.AbstractService;
 
-public abstract class BaseService extends AbstractService
-{
+public abstract class BaseService extends AbstractService{
   protected abstract EntityDao getEntityDao();
 
-  protected void saveOrUpdate(Object entity)
-    throws DataAccessException
-  {
+  protected void saveOrUpdate(Object entity) throws DataAccessException{
     getEntityDao().saveOrUpdate(entity);
   }
 
-  protected void save(Object entity)
-    throws DataAccessException
-  {
+  protected void save(Object entity) throws DataAccessException{
     getEntityDao().save(entity);
   }
 
@@ -38,4 +33,7 @@ public abstract class BaseService extends AbstractService
   {
     return getEntityDao().getDate();
   }
+  
+  
+  
 }
