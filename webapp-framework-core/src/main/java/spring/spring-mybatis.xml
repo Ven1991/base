@@ -16,9 +16,9 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
 	    <property name="dataSource" ref="dataSource"></property>
 	    <!-- 自动扫描映射文件 -->
-	    <property name="mapperLocations" value="classpath*:/com/webapp/**/mapper/*Mapper.xml"></property>
+	    <property name="mapperLocations" value="classpath*:com/webapp/**/*Mapper.xml" />
 	    <!-- mybatis插件配置  PageHelper -->
-	    <property name="configLocation" value="classpath*:/mybatis/mybatis-config.xml" />  
+	    <property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />  
 	</bean>
 	
 	<!-- 该包下的类支持注解，表示会被当作{@code mybatis mapper}处理 配置了之后表示可以自动引入mapper类-->  
@@ -26,7 +26,7 @@
 	
 	<!-- 将映射文件与mapper类关lian-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-	    <property name="basePackage" value="com.webapp.**.mapper"></property>
+	    <property name="basePackage" value="com.webapp.**.dao"></property>
 	     <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
 	    <!-- <property name="markerInterface" value="com.webapp.base.mapper.BaseMapper"></property> -->
 	</bean> 
