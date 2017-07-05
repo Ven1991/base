@@ -85,7 +85,7 @@
       <property name="filters" value="stat" />   
     </bean>  
   
-    <bean id="dataSource" class="com.webapp.framework.common.datasource.DynamicDataSource">  
+    <bean id="dataSource" class="com.webapp.framework.core.datasource.DynamicDataSource">  
         <property name="targetDataSources">      
           <map key-type="java.lang.String">      
               <!-- write -->    

@@ -19,7 +19,7 @@
     <tx:annotation-driven  transaction-manager="transactionManager"/>  
     
     <!-- 为业务逻辑层的方法解析@DataSource注解  为当前线程的routeholder注入数据源key -->   
-    <bean id="dataSourceAspect" class="com.webapp.framework.common.datasource.DataSourceAspect" />  
+    <bean id="dataSourceAspect" class="com.webapp.framework.core.datasource.DataSourceAspect" />  
     
     <!-- 事物管理 -->
 	<bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
