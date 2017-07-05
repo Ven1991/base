@@ -10,7 +10,7 @@
      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
      http://mybatis.org/schema/mybatis-spring 
      http://mybatis.org/schema/mybatis-spring.xsd" 
-     default-autowire="byName" default-lazy-init="true">
+     default-lazy-init="false">
      
 	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
@@ -27,7 +27,7 @@
 	<!-- 将映射文件与mapper类关lian-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	    <property name="basePackage" value="com.webapp.**.dao"></property>
-	     <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+	    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	    <!-- <property name="markerInterface" value="com.webapp.base.mapper.BaseMapper"></property> -->
 	</bean> 
      

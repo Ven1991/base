@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
-  xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-  xmlns:cache="http://www.springframework.org/schema/cache" xmlns:p="http://www.springframework.org/schema/p"
-  xmlns:mybatis="http://mybatis.org/schema/mybatis-spring" 
-  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
-     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
-     http://www.springframework.org/schema/context
-     http://www.springframework.org/schema/context/spring-context-4.2.xsd" 
-     default-autowire="byName" default-lazy-init="true">
-
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	
+    <!-- init-method="init" -->
     <bean id="readDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">     
       <!-- 基本属性 url、user、password -->  
-     <!--  <property name="driverClassName" value="${mysql.driverClassName}" />  -->
-     <!--  <property name="url" value="${mysql.slave.one.jdbcurl}" />     
+      <property name="driverClassName" value="${mysql.driverClassName}" />
+      <property name="url" value="${mysql.slave.one.jdbcurl}" />     
  	  <property name="username" value="${mysql.slave.one.username}" />     
-      <property name="password" value="${mysql.slave.one.password}" />  -->
-      <property name="url" value="jdbc:mysql://localhost:3306/pwb" />     
+      <property name="password" value="${mysql.slave.one.password}" /> 
+      <!-- <property name="url" value="jdbc:mysql://localhost:3306/pwb" />     
  	  <property name="username" value="root" />     
-      <property name="password" value="root" />
+      <property name="password" value="root" /> -->
       
       <!-- 配置初始化大小、最小、最大 -->  
       <property name="initialSize" value="1" />  
@@ -50,13 +52,13 @@
       
     <bean id="writeDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">    
       <!-- 基本属性 url、user、password -->  
-     <!--  <property name="driverClassName" value="${mysql.driverClassName}" />  -->
-     <!--  <property name="url" value="${mysql.master.jdbcurl}" />     
+      <property name="driverClassName" value="${mysql.driverClassName}" />
+      <property name="url" value="${mysql.master.jdbcurl}" />     
  	  <property name="username" value="${mysql.master.username}" />     
-      <property name="password" value="${mysql.master.password}" />  -->
-      <property name="url" value="jdbc:mysql://localhost:3306/pwb" />     
+      <property name="password" value="${mysql.master.password}" />
+      <!-- <property name="url" value="jdbc:mysql://localhost:3306/pwb" />     
  	  <property name="username" value="root" />     
-      <property name="password" value="root" />
+      <property name="password" value="root" /> -->
   
       <!-- 配置初始化大小、最小、最大 -->  
       <property name="initialSize" value="1" />  
@@ -95,7 +97,11 @@
           </map>               
         </property>   
         <property name="defaultTargetDataSource" ref="readDataSource1"/>      
-    </bean>  
+    </bean>
+    
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
     
 </beans>
 
