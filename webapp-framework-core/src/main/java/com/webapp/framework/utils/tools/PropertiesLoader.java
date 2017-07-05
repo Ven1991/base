@@ -7,8 +7,8 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.core.io.Resource;
@@ -18,7 +18,7 @@ import com.webapp.framework.utils.file.utils.FileUtil;
 
 public class PropertiesLoader
 {
-  private static Logger logger = LoggerFactory.getLogger(PropertiesLoader.class);
+  private static Logger logger = LogManager.getLogger(PropertiesLoader.class);
 
   private static ResourceLoader resourceLoader = new DefaultResourceLoader();
   private Properties properties;

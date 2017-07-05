@@ -1,4 +1,4 @@
-package com.webapp.framework.core.datasource;
+package com.webapp.framework.common.datasource;
 
 import java.util.ArrayList;
 import java.util.List;

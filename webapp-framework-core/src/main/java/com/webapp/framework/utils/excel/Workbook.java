@@ -7,50 +7,42 @@ import java.util.Map;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Workbook
-{
-  private String filePath = "";
+public class Workbook {
+	private String filePath = "";
 
-  private String fileName = "";
+	private String fileName = "";
 
-  private XSSFWorkbook poiWorkbook = new XSSFWorkbook();
+	private XSSFWorkbook poiWorkbook = new XSSFWorkbook();
 
-  private Map<String, XSSFCellStyle> poiStyleMap = new HashMap();
+	private Map<String, XSSFCellStyle> poiStyleMap = new HashMap();
 
-  private List<Sheet> sheetList = new ArrayList();
+	private List<Sheet> sheetList = new ArrayList();
 
-  public String getFilePath()
-  {
-    return this.filePath;
-  }
+	public String getFilePath() {
+		return this.filePath;
+	}
 
-  public void setFilePath(String filePath)
-  {
-    this.filePath = filePath;
-  }
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 
-  public String getFileName()
-  {
-    return this.fileName;
-  }
+	public String getFileName() {
+		return this.fileName;
+	}
 
-  public void setFileName(String fileName)
-  {
-    this.fileName = fileName;
-  }
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
-  public XSSFWorkbook getPoiWorkbook()
-  {
-    return this.poiWorkbook;
-  }
+	public XSSFWorkbook getPoiWorkbook() {
+		return this.poiWorkbook;
+	}
 
-  public Map<String, XSSFCellStyle> getPoiStyleMap()
-  {
-    return this.poiStyleMap;
-  }
+	public Map<String, XSSFCellStyle> getPoiStyleMap() {
+		return this.poiStyleMap;
+	}
 
-  public List<Sheet> getSheetList()
-  {
-    return this.sheetList;
-  }
+	public List<Sheet> getSheetList() {
+		return this.sheetList;
+	}
 }

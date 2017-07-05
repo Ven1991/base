@@ -17,7 +17,7 @@
      <!--  <property name="url" value="${mysql.slave.one.jdbcurl}" />     
  	  <property name="username" value="${mysql.slave.one.username}" />     
       <property name="password" value="${mysql.slave.one.password}" />  -->
-      <property name="url" value="jdbc:mysql://192.168.137.150:3306/ytj" />     
+      <property name="url" value="jdbc:mysql://localhost:3306/pwb" />     
  	  <property name="username" value="root" />     
       <property name="password" value="root" />
       
@@ -54,7 +54,7 @@
      <!--  <property name="url" value="${mysql.master.jdbcurl}" />     
  	  <property name="username" value="${mysql.master.username}" />     
       <property name="password" value="${mysql.master.password}" />  -->
-      <property name="url" value="jdbc:mysql://192.168.137.150:3306/ytj" />     
+      <property name="url" value="jdbc:mysql://localhost:3306/pwb" />     
  	  <property name="username" value="root" />     
       <property name="password" value="root" />
   

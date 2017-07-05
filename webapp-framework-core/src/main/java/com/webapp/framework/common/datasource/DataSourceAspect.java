@@ -2,14 +2,15 @@ package com.webapp.framework.common.datasource;
 
 import java.lang.reflect.Method;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 public class DataSourceAspect {  
     //log   
-    private static final Logger LOG = LoggerFactory.getLogger(DataSourceAspect.class);  
+    private static final Logger LOG = LogManager.getLogger(DataSourceAspect.class);  
   
     public void before(JoinPoint point) {  
         Object target = point.getTarget();  

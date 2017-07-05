@@ -22,7 +22,7 @@
 	<!-- 配置velocity引擎 -->  
     <bean id="velocityConfigurer"  class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">  
         <property name="resourceLoaderPath" value="/WEB-INF/webview/" /><!-- 模板存放的路径 -->  
-        <property name="configLocation" value="classpath*:/velocity/velocity.properties" />  
+        <property name="configLocation" value="classpath:/velocity/velocity.properties" />  
     </bean>  
     
    <!--   
@@ -47,23 +47,28 @@
 	</bean> -->
   
     <!-- 配置视图的显示 -->  
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">  
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver"> 
+    	<property name="cache" value="true" /> 
         <!-- 视图文件的前缀，即存放的路径 -->  
         <property name="prefix" value="/" />
         <!-- 视图文件的后缀名 -->  
         <property name="suffix">
 			<value>.html</value>
 		</property>
-        <property name="toolboxConfigLocation" value="classpath*:/velocity/tools.xml" /><!--toolbox配置文件路径-->  
+        <property name="toolboxConfigLocation" value="classpath:/velocity/toolbox.xml" /><!--toolbox配置文件路径-->  
         <property name="dateToolAttribute" value="date" /><!--日期函数名称-->  
         <property name="numberToolAttribute" value="number" /><!--数字函数名称-->  
         <property name="contentType" value="text/html;charset=UTF-8" />  
         <property name="exposeSpringMacroHelpers" value="true" /><!--是否使用spring对宏定义的支持-->  
         <property name="exposeRequestAttributes" value="true" /><!--是否开放request属性-->  
         <property name="requestContextAttribute" value="rc"/><!--request属性引用名称-->  
-        <property name="layoutUrl" value="layout/default.vm"/><!--指定layout文件-->  
+        <!-- <property name="layoutUrl" value="layout/default.vm"/> --><!--指定layout文件-->  
     </bean>  	
 	
-	
-	
 </beans>
+
+
+
+
+
+
