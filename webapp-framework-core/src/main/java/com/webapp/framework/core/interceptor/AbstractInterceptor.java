@@ -31,7 +31,7 @@ public abstract class AbstractInterceptor extends HandlerInterceptorAdapter {
 
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		if (!isInit.booleanValue())
+		if (!isInit.booleanValue()){
 			try {
 				synchronized (isInit) {
 					if (!isInit.booleanValue()) {
@@ -42,6 +42,7 @@ public abstract class AbstractInterceptor extends HandlerInterceptorAdapter {
 			} catch (Exception localException) {
 
 			}
+		}
 		this.log.debug("==============执行顺序: 1、preHandle================");
 
 		this.runTimes.put(Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis()));
