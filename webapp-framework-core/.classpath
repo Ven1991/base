@@ -85,4 +85,9 @@
   <classpathentry kind="var" path="M2_REPO/org/mozilla/intl/chardet/1.0/chardet-1.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/codehaus/jettison/jettison/1.3.8/jettison-1.3.8.jar" sourcepath="M2_REPO/org/codehaus/jettison/jettison/1.3.8/jettison-1.3.8-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/jsoup/jsoup/1.5.2/jsoup-1.5.2.jar" sourcepath="M2_REPO/org/jsoup/jsoup/1.5.2/jsoup-1.5.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/22.0/guava-22.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/errorprone/error_prone_annotations/2.0.18/error_prone_annotations-2.0.18.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.jar"/>
 </classpath>

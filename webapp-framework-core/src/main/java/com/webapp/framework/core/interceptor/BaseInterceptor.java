@@ -58,10 +58,10 @@ public abstract class BaseInterceptor extends AbstractInterceptor {
 
 	protected void initOnFirstAccess(HttpServletRequest request, HttpServletResponse response) {
 		super.initOnFirstAccess(request, response);
-		addOverAllBean("CodesUtil", CodesUtil.class);
+		//addOverAllBean("CodesUtil", CodesUtil.class);
 		try {
 			this.log.info("扫描无需权限控制的白名单...");
-			UrlFilterUtil.loadUrlFilter();
+			//UrlFilterUtil.loadUrlFilter();
 		} catch (Exception localException) {
 		}
 	}
