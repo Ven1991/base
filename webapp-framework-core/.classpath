@@ -65,6 +65,7 @@
   <classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/net/sf/ezmorph/ezmorph/1.0.6/ezmorph-1.0.6.jar" sourcepath="M2_REPO/net/sf/ezmorph/ezmorph/1.0.6/ezmorph-1.0.6-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/quartz-scheduler/quartz/2.2.1/quartz-2.2.1.jar" sourcepath="M2_REPO/org/quartz-scheduler/quartz/2.2.1/quartz-2.2.1-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/quartz-scheduler/quartz-jobs/2.2.1/quartz-jobs-2.2.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/redis/clients/jedis/2.8.1/jedis-2.8.1.jar" sourcepath="M2_REPO/redis/clients/jedis/2.8.1/jedis-2.8.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-pool2/2.4.2/commons-pool2-2.4.2.jar" sourcepath="M2_REPO/org/apache/commons/commons-pool2/2.4.2/commons-pool2-2.4.2-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/opensymphony/oscache/2.4/oscache-2.4.jar"/>

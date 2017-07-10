@@ -8,9 +8,7 @@ import org.springframework.ui.ModelMap;
 
 import com.webapp.framework.core.beans.BaseUserForm;
 import com.webapp.framework.core.beans.RunTime;
-import com.webapp.framework.core.utils.CodesUtil;
 import com.webapp.framework.core.utils.StringUtil;
-import com.webapp.framework.core.utils.UrlFilterUtil;
 
 public abstract class BaseInterceptor extends AbstractInterceptor {
 	protected static boolean isMobileModel = false;

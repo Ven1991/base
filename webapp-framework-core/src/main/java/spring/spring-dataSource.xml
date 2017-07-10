@@ -12,7 +12,45 @@
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd"
 	default-autowire="byName" default-lazy-init="false">
 	
-    <!-- init-method="init" -->
+	<!-- 写数据库 -->
+	<bean id="writeDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">    
+      <!-- 基本属性 url、user、password -->  
+      <property name="driverClassName" value="${mysql.driverClassName}" />
+      <property name="url" value="${mysql.master.jdbcurl}" />     
+ 	  <property name="username" value="${mysql.master.username}" />     
+      <property name="password" value="${mysql.master.password}" />
+      <!-- <property name="url" value="jdbc:mysql://localhost:3306/pwb" />     
+ 	  <property name="username" value="root" />     
+      <property name="password" value="root" /> -->
+  
+      <!-- 配置初始化大小、最小、最大 -->  
+      <property name="initialSize" value="1" />  
+      <property name="minIdle" value="1" />   
+      <property name="maxActive" value="20" />  
+  
+      <!-- 配置获取连接等待超时的时间 -->  
+      <property name="maxWait" value="60000" />  
+  
+      <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->  
+      <property name="timeBetweenEvictionRunsMillis" value="60000" />  
+  
+      <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->  
+      <property name="minEvictableIdleTimeMillis" value="300000" />  
+  
+      <property name="validationQuery" value="SELECT 'x'" />  
+      <property name="testWhileIdle" value="true" />  
+      <property name="testOnBorrow" value="false" />  
+      <property name="testOnReturn" value="false" />  
+  
+      <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->  
+      <property name="poolPreparedStatements" value="true" />  
+      <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />  
+  
+      <!-- 配置监控统计拦截的filters -->  
+      <property name="filters" value="stat" />   
+    </bean>  
+	
+    <!-- 读数据库 1 -->
     <bean id="readDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">     
       <!-- 基本属性 url、user、password -->  
       <property name="driverClassName" value="${mysql.driverClassName}" />
@@ -49,17 +87,18 @@
       <!-- 配置监控统计拦截的filters -->  
       <property name="filters" value="stat" />   
     </bean>  
-      
-    <bean id="writeDataSource1" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">    
+    
+    
+     <bean id="readDataSource2" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">     
       <!-- 基本属性 url、user、password -->  
       <property name="driverClassName" value="${mysql.driverClassName}" />
-      <property name="url" value="${mysql.master.jdbcurl}" />     
- 	  <property name="username" value="${mysql.master.username}" />     
-      <property name="password" value="${mysql.master.password}" />
+      <property name="url" value="${mysql.slave.two.jdbcurl}" />     
+ 	  <property name="username" value="${mysql.slave.two.username}" />     
+      <property name="password" value="${mysql.slave.two.password}" /> 
       <!-- <property name="url" value="jdbc:mysql://localhost:3306/pwb" />     
  	  <property name="username" value="root" />     
       <property name="password" value="root" /> -->
-  
+      
       <!-- 配置初始化大小、最小、最大 -->  
       <property name="initialSize" value="1" />  
       <property name="minIdle" value="1" />   
@@ -84,16 +123,17 @@
       <property name="maxPoolPreparedStatementPerConnectionSize" value="20" />  
   
       <!-- 配置监控统计拦截的filters -->  
-      <property name="filters" value="stat" />   
+      <property name="filters" value="stat" /> 
     </bean>  
-  
+    
     <bean id="dataSource" class="com.webapp.framework.core.datasource.DynamicDataSource">  
         <property name="targetDataSources">      
           <map key-type="java.lang.String">      
               <!-- write -->    
-             <entry key="write" value-ref="writeDataSource1"/>      
+             <entry key="write" value-ref="writeDataSource"/>      
              <!-- read -->    
-             <entry key="read" value-ref="readDataSource1"/>      
+             <entry key="read1" value-ref="readDataSource1"/>      
+             <entry key="read2" value-ref="readDataSource2"/> 
           </map>               
         </property>   
         <property name="defaultTargetDataSource" ref="readDataSource1"/>      

@@ -22,9 +22,17 @@
     </bean>
     
     <!-- 通过AOP配置提供事务增强，让service层中的所有方法拥有事物 -->
-    <aop:config proxy-target-class="true">    
-        <aop:aspect id="dataSourceAspect" ref="dataSourceAspect" order="1">    
-            <aop:pointcut id="tx" expression="execution(* com.webapp..*.service..*.*(..))"/>    
+    <aop:config proxy-target-class="true">  
+        <!-- 切点 --> 
+        <aop:pointcut id="tx" expression="execution(* com.webapp..*.service..*.*(..))"/>
+        
+        <!-- <aop:advisor pointcut="execution(* com.webapp..*.service..*.*(..))" advice-ref="txAdvice" /> -->
+        <!-- 建议 -->
+        <aop:advisor pointcut-ref="tx" advice-ref="txAdvice" />
+        
+        <!-- 切面 -->
+        <aop:aspect id="dataSourceAspect" ref="dataSourceAspect" order="1"> 
+            <!-- <aop:pointcut id="txx" expression="execution(* com.webapp..*.service..*.*(..))"/>    -->
             <aop:before pointcut-ref="tx" method="before" />                
         </aop:aspect>    
     </aop:config> 
@@ -34,8 +42,7 @@
 		<aop:advisor pointcut="execution(* com.webapp..*.service..*.*(..))" advice-ref="txAdvice" />
 	</aop:config> 
 	-->
-      
-	<!-- 
+    <!-- 拦截器方式配置事物 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="find*" read-only="true" propagation="SUPPORTS" />
@@ -46,7 +53,6 @@
 			<tx:method name="*" propagation="REQUIRED" read-only="false" />
 		</tx:attributes>
 	</tx:advice> 
-	-->
      
 </beans>
 

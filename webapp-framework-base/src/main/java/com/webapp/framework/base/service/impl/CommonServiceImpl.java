@@ -1,5 +1,7 @@
 package com.webapp.framework.base.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +21,10 @@ public class CommonServiceImpl extends BaseService implements CommonService {
 		return DBDialect.MYSQL;
 	}
 
+
 	@Override
-	protected BaseDao getEntityDao() {
-		// TODO Auto-generated method stub
-		return baseDao;
+	public Date getDate() {
+		return baseDao.getDate();
 	}
+
 }
