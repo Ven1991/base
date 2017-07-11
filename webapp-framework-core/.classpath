@@ -91,4 +91,5 @@
   <classpathentry kind="var" path="M2_REPO/com/google/errorprone/error_prone_annotations/2.0.18/error_prone_annotations-2.0.18.jar"/>
   <classpathentry kind="var" path="M2_REPO/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/github/bingoohuang/patchca/0.0.1/patchca-0.0.1.jar"/>
 </classpath>
