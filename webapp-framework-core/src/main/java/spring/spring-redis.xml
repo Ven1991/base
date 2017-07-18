@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" 
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/tx 
+      http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+      
+     
+     <!-- 连接池配置 -->  
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">  
+        <!-- 连接池中最大空闲的连接数 -->  
+        <property name="maxIdle" value="${jedis.maxIdle}"></property>  
+        <!-- 连接空闲的最小时间，达到此值后空闲连接将可能会被移除。负值(-1)表示不移除. -->  
+        <property name="minEvictableIdleTimeMillis" value="${jedis.minEvictableIdleTimeMillis}"></property>  
+        <!-- 对于“空闲链接”检测线程而言，每次检测的链接资源的个数。默认为3 -->  
+        <property name="numTestsPerEvictionRun" value="${jedis.numTestsPerEvictionRun}"></property>  
+        <!-- “空闲链接”检测线程，检测的周期，毫秒数。如果为负值，表示不运行“检测线程”。默认为-1. -->  
+        <property name="timeBetweenEvictionRunsMillis" value="${jedis.timeBetweenEvictionRunsMillis}"></property>  
+    </bean>  
+    
+　　  <!-- 连接池的配置 -->
+    <bean name="genericObjectPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+        <property name="maxWaitMillis" value="-1" />
+        <property name="maxTotal" value="1000" />
+        <property name="minIdle" value="8" />
+        <property name="maxIdle" value="100" />
+    </bean>
+
+    <bean id="jedisClusterFactory" class="com.hanwei.its.itoss.dao.redis.JedisClusterFactory">
+        <property name="addressConfig">
+            <value>classpath:conf/redis.properties</value>
+            <value>/conf/redis.properties</value>
+        </property>
+        <property name="addressKeyPrefix" value="address" />  <!-- 属性文件里 key的前缀 --> 
+        <property name="timeout" value="300000" />
+        <property name="maxRedirections" value="6" />
+        <property name="genericObjectPoolConfig" ref="genericObjectPoolConfig" />
+    </bean>
+    
+    <!-- 添加RedisHttpSessionConfiguration用于session共享 -->
+    <bean id="redisHttpSessionConfiguration" class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+    	<property name="maxInactiveIntervalInSeconds" value="600"/>
+    </bean>
+      
+
+<!--     <bean id="redisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.maxTotal}" />
+        <property name="minIdle" value="1"/>
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="maxWaitMillis" value="${redis.maxWait}" />
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+        <property name="testOnReturn" value="true"/> 
+        <property name="testWhileIdle" value="true"/>
+    </bean>
+    
+    <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool" destroy-method="destroy">
+        <constructor-arg ref="jedisPoolConfig"/> 
+        <constructor-arg>
+            <list> 
+	            <bean class="redis.clients.jedis.JedisShardInfo"> 
+	                <constructor-arg index="0" value="127.0.0.1"/>
+	                <constructor-arg index="1" value="6379"/>
+	                <constructor-arg index="2" value="instance:01"/>
+	            </bean>
+	            <bean class="redis.clients.jedis.JedisShardInfo">
+	                <constructor-arg index="0" value="127.0.0.1"/>
+	                <constructor-arg index="1" value="6380"/>
+	                <constructor-arg index="2" value="instance:02"/>
+	            </bean> 
+	            <bean class="redis.clients.jedis.JedisShardInfo">
+	                <constructor-arg index="0" value="127.0.0.1"/>
+	                <constructor-arg index="1" value="6381"/>
+	                <constructor-arg index="2" value="instance:03"/>
+	            </bean>
+            </list>
+        </constructor-arg>
+     </bean> -->
+
+
+
+
+     
+</beans>
