@@ -1,0 +1,43 @@
+<toolbox>
+<xhtml>true</xhtml>
+<tool>
+     <key>mathTool</key>
+     <scope>application</scope>
+     <class>org.apache.velocity.tools.generic.MathTool</class>
+</tool>
+<tool>
+     <key>numberTool</key>
+     <scope>application</scope>
+     <class>org.apache.velocity.tools.generic.NumberTool</class>
+     <parameter name="format" value="#0.00" />
+</tool>
+<tool>
+    <key>dateUtil</key>
+    <scope>application</scope>
+    <class>org.apache.velocity.tools.generic.DateTool</class>
+</tool>
+
+<!-- <tool>
+     <key>dateTools</key>
+     <scope>application</scope>
+     <class>com.dept.web.general.util.TimeUtil</class>
+</tool>
+<tool>
+     <key>viewTool</key>
+     <scope>application</scope>
+     <class>com.dept.web.general.util.NumberUtil</class>
+</tool>
+<tool>
+     <key>textTool</key>
+     <scope>application</scope>
+     <class>com.dept.web.general.util.TextUtil</class>
+</tool>
+
+<tool>
+     <key>dateTool</key>
+     <scope>application</scope>
+     <class>com.dept.web.general.util.DateUtils</class>
+</tool> -->
+
+
+</toolbox>

@@ -1,0 +1,18 @@
+##截取字段
+#macro(limit $content $value)
+#if($content)
+#set($content=$content.replaceAll("&amp;", "&"))
+#set($content=$content.replaceAll("&mdash;", "—"))
+#set($content=$content.replaceAll("&ldquo;", "“"))
+#set($content=$content.replaceAll("&rdquo;", "”"))
+#set($content=$content.replaceAll("&lsquo;", "‘"))
+#set($content=$content.replaceAll("&rsquo;", "’"))
+#set($content=$content.replaceAll("&nbsp;", " "))
+#set($content=$content.replaceAll("&hellip;", "…"))
+#set($content=$content.replaceAll("&middot;", "·"))
+#set($content=$content.replaceAll("&bull;", "•"))
+#set($content=$content.replaceAll("&#039;", "'"))
+#if($!{content.length()} > $value)$!{content.toString().substring(0, $value)}#else$!content#end
+#end
+#end
+
