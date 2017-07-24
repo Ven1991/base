@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -861,6 +862,30 @@ public class StringUtil extends StringUtils {
 		}
 		return Result;
 	}
+	
+	 /**
+     * 判断字符串是否为空的正则表达式，空白字符对应的unicode编码
+     */
+    private static final String EMPTY_REGEX = "[\\s\\u00a0\\u2007\\u202f\\u0009-\\u000d\\u001c-\\u001f]+";
+
+    
+	/**
+     * 验证字符串是否为空
+     * 
+     * @param input
+     * @return
+     */
+    public static boolean isEmpty(String input) {
+        return input == null || input.equals("") || input.matches(EMPTY_REGEX);
+    }
+
+    public static boolean isNotEmpty(String input){
+        return !isEmpty(input);
+    }
+
+    public static String getUuid() {
+        return UUID.randomUUID().toString();
+    }
 
 	static {
 		for (int i = 0; i < 27; i++)
